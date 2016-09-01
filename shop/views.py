@@ -17,3 +17,14 @@ def product_list(request, category_slug=None):
     return render(request,
                   'shop/product/list.html',
                   context_data)
+
+
+def product_detail(request, id, slug):
+    product = Product.objects.filter(Product,
+                                     id=id,
+                                     slug=slug,
+                                     available=True)
+    context_data = {'product': product, }
+    return render(request,
+                  'shop/product/detail.html',
+                  context_data)
