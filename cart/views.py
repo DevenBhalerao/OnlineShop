@@ -16,17 +16,17 @@ def add_cart(request, product_id):
         cart.add(product=product_ordered,
                  quantity=form_data['quantity'],
                  update_quantity=form_data['update'])
-    return redirect()
+    return redirect('cart:detail')
+
 
 def cart_remove(request, product_id):
     product_removed = get_object_or_404(Product,
                                         id=product_id)
     cart = Cart(request)
     cart.remove(product_removed)
-    return redirect()
+    return redirect('cart:detail')
 
 
 def cart_detail(request):
     cart = Cart(request)
     return render(request, 'cart/detail.html', {'cart': cart})
-            
