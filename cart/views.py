@@ -16,7 +16,7 @@ def add_cart(request, product_id):
         cart.add(product=product_ordered,
                  quantity=form_data['quantity'],
                  update_quantity=form_data['update'])
-    return redirect('cart:detail')
+    return redirect('cart:cart_detail')
 
 
 def cart_remove(request, product_id):
@@ -24,7 +24,7 @@ def cart_remove(request, product_id):
                                         id=product_id)
     cart = Cart(request)
     cart.remove(product_removed)
-    return redirect('cart:detail')
+    return redirect('cart:cart_detail')
 
 
 def cart_detail(request):
