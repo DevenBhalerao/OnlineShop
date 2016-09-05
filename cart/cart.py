@@ -2,6 +2,10 @@ from decimal import Decimal
 from django.conf import settings
 from shop.models import Product
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 class Cart(object):
 
@@ -45,7 +49,8 @@ class Cart(object):
 
     @property
     def get_total_price(self):
-        return sum(item['total_price'] for item in self.cart.values())
+        return sum(Decimal(item['price']) * item['quantity'] for item in
+                   self.cart.values())
 
     def save(self):
         self.session[settings.CART_SESSION_ID] = self.cart
