@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'shop',
     'cart',
     'orders',
+    'paypal.standard.ipn',
+    'payment'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -120,6 +122,10 @@ USE_TZ = True
 
 # Cart settings
 CART_SESSION_ID = 'cart'
+
+# django-paypal settings
+PAYPAL_RECEIVER_EMAIL = 'devenbhalerao@gmail.com'
+PAYPAL_TEST = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
