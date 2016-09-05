@@ -22,7 +22,7 @@ Your shopping cart
 		<tr>
 			<a href="{{ product.get_absolute_url }}"><td>{{ product.name }}</td></a>
 			<td>
-			<form action="{% url "cart:add_cart" product.id %}" method="post">
+				<form action="{% url "cart:add_cart" product.id %}" method="post">
 					{% csrf_token %}
 					{{ item.update_quantity_form.quantity }}
 					{{ item.update_quantity_form.update }}
@@ -44,6 +44,8 @@ Your shopping cart
 </table>
 <p class="text-right">
 	<a href="{% url "shop:product_list" %}">Continue shopping</a>
-	<a href="#">Checkout</a>
+	<a href="{% url "orders:order_create" %}">
+		Checkout
+	</a>
 </p>
 {% endblock %}
