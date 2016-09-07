@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'cart',
     'orders',
     'paypal.standard.ipn',
-    'payment'
+    'payment',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -134,6 +134,8 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
 
 LOGGING = {
     'version': 1,
