@@ -5,7 +5,7 @@ Your shopping cart
 {% endblock %}
 {% block content %}
 <h1>Your shopping cart</h1>
-<table class="cart">
+<table class="cart_detail">
 	<thead>
 		<tr>
 			<th>Image</th>
@@ -20,6 +20,7 @@ Your shopping cart
 		{% for item in cart %}
 		{% with product=item.product %}
 		<tr>
+			<td>image here</td>
 			<a href="{{ product.get_absolute_url }}"><td>{{ product.name }}</td></a>
 			<td>
 				<form action="{% url "cart:add_cart" product.id %}" method="post">

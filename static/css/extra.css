@@ -1,4 +1,13 @@
-.cart {
-
+.cart_list {
     padding-bottom: 10px;
+
 }
+
+table.cart_detail, th, td {
+	padding: 10px 45px;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+table.cart_detail > 
