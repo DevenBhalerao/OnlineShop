@@ -1,5 +1,6 @@
 {% extends "shop/base.html" %}
 {% load static %}
+{% load thumbnail %}
 {% block title %}
 {% if category %}{{ category.title }}{% else %}Products{% endif %}
 {% endblock %}
@@ -82,8 +83,10 @@
 
 		{% for product in related_products %}
 		<div class="col-sm-3 col-xs-6">
-			<a href="#">
-				<img class="img-responsive img-hover img-related" src="http://placehold.it/500x300" alt="">
+			<a href="{{ product.get_absolute_url }}">
+				{% thumbnail product.image "500x350" crop="center" as im %} 
+				<img class="img-responsive img-hover img-related" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}"> 
+				{% endthumbnail %} 
 			</a>
 			<p>{{ product.name }}</p>
 		</div>

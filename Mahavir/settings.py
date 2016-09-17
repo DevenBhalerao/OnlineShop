@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'orders',
     'paypal.standard.ipn',
     'payment',
+    'sorl.thumbnail',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -131,7 +132,10 @@ PAYPAL_TEST = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 
+# sorl
+THUMBNAIL_DEBUG = True
 
+# static and media settings
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
