@@ -4,21 +4,96 @@
 {% if category %}{{ category.title }}{% else %}Products{% endif %}
 {% endblock %}
 {% block content %}
-<div class="product-detail">
-		<img src="{% if product.image %}{{ product.image.url }}{% endif %}" alt="pic here">
-		<h1>{{ product.name }}</h1>
-		<h2>
-		<a href="{{ product.category.get_absolute_url }}">
-		{{ product.category }}
-		</a></h2>
+
+<div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header">{{ product.name }}
+			<small>in </small>
+		</h1>
+		<ol class="breadcrumb">
+			<li><a href="{% url "shop:product_list"%}">Home</a>
+			</li>
+			<li><a href="{{ product.category.get_absolute_url }}">
+				{{ product.category }}
+			</a></li>
+			<li class="active">{{ product.name }}</li>
+		</ol>
+	</div>
+</div>
+
+<div class="row">
+
+	<div class="col-md-8">
+		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+			</ol>
+
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner">
+				<div class="item active">
+					<img class="img-responsive" src="{% if product.image %}{{ product.image.url }}{% endif %}" alt="">
+				</div>
+				<div class="item">
+					<img class="img-responsive" src="http://placehold.it/750x500" alt="">
+				</div>
+				<div class="item">
+					<img class="img-responsive" src="http://placehold.it/750x500" alt="">
+				</div>
+			</div>
+
+			<!-- Controls -->
+			<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+			</a>
+			<a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+			</a>
+		</div>
+	</div>
+
+	<div class="col-md-4">
+		<h3>Project Description</h3>
+		<p>{{ product.description|linebreaks }}</p>
+		<h3>Project Details</h3>
+		<ul>
+
+			<li>${{ product.price }}</li>
+			<li>Dolor Sit Amet</li>
+			<li>Consectetur</li>
+		</ul>
 		<div>
 			<form action="{% url "cart:add_cart" product.id %}" method="POST">
-			{% csrf_token %}
-			{{ cart_add_form.as_p }}
-			<input type="submit" name="submit" value="Add to cart">
+				{% csrf_token %}
+				{{ cart_add_form.as_p }}
+				<input type="submit" name="submit" value="Add to cart">
 			</form>
 		</div>
-		<p class="price">${{ product.price }}</p>
-		{{ product.description|linebreaks }}
+	</div>
+
+	<div class="row">
+
+		<div class="col-lg-12">
+			<h3 class="page-header">Related Products</h3>
+		</div>
+
+		{% for product in related_products %}
+		<div class="col-sm-3 col-xs-6">
+			<a href="#">
+				<img class="img-responsive img-hover img-related" src="http://placehold.it/500x300" alt="">
+			</a>
+			<p>{{ product.name }}</p>
+		</div>
+		{% endfor %}
+
+	</div>
+
 </div>
+
+
 {% endblock %}
+
+

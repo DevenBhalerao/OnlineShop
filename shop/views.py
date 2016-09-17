@@ -26,9 +26,13 @@ def product_detail(request, id, slug):
                                 id=id,
                                 slug=slug,
                                 available=True)
+    related_products = Product.objects.filter(
+        category=product.category
+    )
     cart_add_form = CartAddProductForm()
     context_data = {'product': product,
-                    'cart_add_form': cart_add_form}
+                    'cart_add_form': cart_add_form,
+                    'related_products': related_products}
     return render(request,
                   'shop/product/detail.html',
                   context_data)

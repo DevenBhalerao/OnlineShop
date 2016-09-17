@@ -11,6 +11,10 @@
 	<title>{% block title %}My shop{% endblock %}</title>
 	<!-- Bootstrap Core CSS -->
 	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" >
+    <link href="{% static 'css/modern-business.css' %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
 
 	<!-- Custom CSS -->
 	<link rel="stylesheet" href="{% static 'css/shop-homepage.css' %}" >
@@ -31,7 +35,7 @@
     		<div class="container">
 
     		<div class="row">
-    				<div class="pull-right cart">
+    				<div class="pull-right cart_list">
     					<div>
     						{% with total_items=cart|length %}
     						{% if cart|length > 0 %}
@@ -57,3 +61,6 @@
     	</div>
     </body>
     </html>
+
+
+    
