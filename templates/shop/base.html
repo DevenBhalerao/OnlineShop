@@ -16,51 +16,73 @@
     <!-- Custom Fonts -->
     <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
 
-	<!-- Custom CSS -->
-	<link rel="stylesheet" href="{% static 'css/shop-homepage.css' %}" >
-	<link rel="stylesheet" href="{% static 'css/extra.css' %}" >
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/shop-homepage.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/extra.css' %}" >
 
-	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
-    </head>
-    <body>
 
-    	{% include "shop/navbar.html" %}
+        <!-- Calling jquery first -->
+        <script language="JavaScript" type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+        <script language="JavaScript" type="text/javascript" src="{% static 'js/bootstrap.min.js' %}">
+        </script>
 
-    	<div>
-    		<div class="container">
+        <!-- Carousel -->
+        <script language="JavaScript" type="text/javascript">
+          $(document).ready(function(){
+            $('.carousel').carousel({
+              interval: 3000
+          })
+        });    
+      </script>  
+  </head>
+  <body>
 
-    		<div class="row">
-    				<div class="pull-right cart_list">
-    					<div>
-    						{% with total_items=cart|length %}
-    						{% if cart|length > 0 %}
-    						Your cart:
-    						<a href="{% url "cart:cart_detail" %}">
-    							{{ total_items }} item{{ total_items|pluralize }},
-    							${{ cart.get_total_price }}
-    						</a>
-    						{% else %}
-    						Your cart is empty.
-    						{% endif %}
-    						{% endwith %}
-    					</div>
-    					<div>
-    						<a href="{% url "cart:cart_detail" %}">My cart</a>
-    					</div>
-    				</div>
-    			</div>
+     {% include "shop/navbar.html" %}
 
-    			{% block content %}
-    			{% endblock %}
-    		</div>
-    	</div>
-    </body>
-    </html>
+     <div>
+      <div class="container">
+
+          <div class="row">
+            <div class="pull-right cart_list">
+               <div>
+                  {% with total_items=cart|length %}
+                  {% if cart|length > 0 %}
+                  Your cart:
+                  <a href="{% url "cart:cart_detail" %}">
+                     {{ total_items }} item{{ total_items|pluralize }},
+                     ${{ cart.get_total_price }}
+                 </a>
+                 {% else %}
+                 Your cart is empty.
+                 {% endif %}
+                 {% endwith %}
+             </div>
+             <div>
+              <a href="{% url "cart:cart_detail" %}">My cart</a>
+          </div>
+      </div>
+  </div>
+
+  {% block content %}
+  {% endblock %}
+  <footer>
+    <div class="row">
+        <div class="col-lg-12">
+            <p>Copyright &copy; Your Website 2014</p>
+        </div>
+    </div>
+</div>
 
 
-    
+</footer>
+</div>
+</body>
+</html>
+
+

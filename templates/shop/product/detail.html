@@ -36,7 +36,11 @@
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner">
 				<div class="item active">
-					<img class="img-responsive" src="{% if product.image %}{{ product.image.url }}{% endif %}" alt="">
+				{% thumbnail product.image "750x500" crop="center" as im %} 
+				<img alt="" class="img-responsive" src="{{ im.url }}" width="{{im.width}}"
+				 height="{{ im.height }}"> 
+				{% endthumbnail %}
+					
 				</div>
 				<div class="item">
 					<img class="img-responsive" src="http://placehold.it/750x500" alt="">
