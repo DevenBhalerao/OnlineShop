@@ -27,7 +27,7 @@ Your shopping cart
 					{% csrf_token %}
 					{{ item.update_quantity_form.quantity }}
 					{{ item.update_quantity_form.update }}
-					<input type="submit" value="Update">
+					<input type="submit" class="btn btn-success" value="Update">
 				</form>
 			</td>
 			<td><a href="{% url "cart:cart_remove" product.id%}">Remove</a></td>
@@ -44,9 +44,9 @@ Your shopping cart
 	</tbody>
 </table>
 <p>
-	<a href="{% url "shop:product_list" %}">Continue shopping</a>
+	<a  href="{% url "shop:product_list" %}"><button type="button" class="btn btn-primary continueshopbtn">Continue shopping</button></a>
 	<a href="{% url "orders:order_create" %}">
-		Checkout
+		<button type="button" class="btn btn-success checkoutbtn pull-right">Checkout</button>
 	</a>
 </p>
 {% endblock %}
