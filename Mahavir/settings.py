@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'shop',
     'cart',
+    'crispy_forms',
     'orders',
     'paypal.standard.ipn',
     'payment',

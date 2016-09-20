@@ -1,4 +1,5 @@
 {% extends "shop/base.html" %}
+{% load crispy_forms_tags %}
 {% block title %}
 Checkout
 {% endblock %}
@@ -19,8 +20,8 @@ Checkout
 </div>
 
 <form action="." method="post" class="order-form">
-	{{ form.as_p }}
-	<p><input type="submit" value="Place order"></p>
+	{{ form|crispy }}
+	<p><input type="submit" class="btn btn-success" value="Place order"></p>
 	{% csrf_token %}
 </form>
 {% endblock %}
