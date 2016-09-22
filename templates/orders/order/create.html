@@ -8,14 +8,35 @@ Checkout
 
 <div>
 	<h3>Your order</h3>
-	<ul>
-		{% for item in cart %}
-		<li>
-			{{ item.quantity }}x {{ item.product.name }}
-			<span>${{ item.total_price }}</span>
-		</li>
-		{% endfor %}
-	</ul>
+	<table>
+		<thead>
+			<tr>
+				<th>Image</th>
+				<th>Product</th>
+				<th>Quantity</th>
+				<th>Unit price</th>
+				<th>Price</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for item in cart %}
+			{% with product=item.product %}
+			<tr>
+				<td>image here</td>
+				<td>{{ product.name }}</td>
+				<td class="num">{{ item.quantity }}</td>
+				<td class="num">${{ item.price }}</td>
+				<td class="num">${{ item.total_price }}</td>
+			</tr>
+			{% endwith %}
+			{% endfor %}
+			<tr class="total">
+				<td>Total</td>
+				<td colspan="3"></td>
+				<td class="num">${{ cart.get_total_price }}</td>
+			</tr>
+		</tbody>
+	</table>
 	<p>Total: ${{ cart.get_total_price }}</p>
 </div>
 
