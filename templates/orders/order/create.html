@@ -1,5 +1,6 @@
 {% extends "shop/base.html" %}
 {% load crispy_forms_tags %}
+{% load thumbnail %}
 {% block title %}
 Checkout
 {% endblock %}
@@ -22,7 +23,12 @@ Checkout
 			{% for item in cart %}
 			{% with product=item.product %}
 			<tr>
-				<td>image here</td>
+				<td>
+					{% thumbnail product.image "300x200" crop="center" as im %} 
+					<img alt="" class="img-responsive" src="{{ im.url }}" width="{{im.width}}"
+					height="{{ im.height }}"> 
+					{% endthumbnail %}
+				</td>
 				<td>{{ product.name }}</td>
 				<td class="num">{{ item.quantity }}</td>
 				<td class="num">${{ item.price }}</td>
@@ -33,13 +39,17 @@ Checkout
 			<tr class="total">
 				<td>Total</td>
 				<td colspan="3"></td>
-				<td class="num">${{ cart.get_total_price }}</td>
+				<td class="num"><b>${{ cart.get_total_price }}</b></td>
 			</tr>
 		</tbody>
 	</table>
-	<p>Total: ${{ cart.get_total_price }}</p>
 </div>
+&nbsp
+&nbsp
+<div>
+	<h1> Enter your details </h1>
 
+</div>
 <form action="." method="post" class="order-form">
 	{{ form|crispy }}
 	<p><input type="submit" class="btn btn-success" value="Place order"></p>
