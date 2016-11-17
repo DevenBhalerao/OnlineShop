@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
+
+
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -123,7 +125,7 @@ USE_L10N = True
 USE_TZ = True
 
 # Cart settings
-CART_SESSION_ID = 'cart'
+CART_SESSION_ID = 'cart1'
 
 # django-paypal settings
 PAYPAL_RECEIVER_EMAIL = 'devenbhalerao@gmail.com'
